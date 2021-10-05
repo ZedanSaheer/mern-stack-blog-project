@@ -64,8 +64,6 @@ const Settings = () => {
         }
     }
 
-    console.log(user._id);
-
     const handleDelete = async () => {
         try {
             await instance.delete(`/users/${user._id}`,  {
@@ -73,7 +71,10 @@ const Settings = () => {
                     userId: user?._id,
                 }
             });
-            window.location.replace("/");
+            dispatch({
+                type:"LOGOUT",
+            })
+            window.location.reload("/");
         } catch (error) {
             setWarning(true);
             showDialog(false)
