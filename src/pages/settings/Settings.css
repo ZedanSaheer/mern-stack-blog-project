@@ -1,0 +1,190 @@
+.settings {
+    display: flex;
+    font-family: "epilogue", sans-serif;
+}
+
+.settings_wrapper {
+    flex: 9;
+    padding: 20px;
+}
+
+.settings_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.settings_updateTitle {
+    color: rgb(42, 42, 43);
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.settings_deleteTitle {
+    color: red;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.settings_dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+}
+
+.settings_dialog>div {
+    border: 1px solid gray;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.dialog_options {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.settings_deleteTitle_yes {
+    color: red;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 800;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.settings_deleteTitle_yes:hover {
+    border: 1px solid red;
+}
+
+.settings_deleteTitle_no {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 800;
+    cursor: pointer;
+    margin-left: 1rem;
+    padding: 0.5rem;
+}
+
+.settings_deleteTitle_no:hover {
+    border: 1px solid white;
+}
+
+.settings_deleteTitle:hover {
+    text-decoration: underline;
+}
+
+.settings_form {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+}
+
+.settings_pp {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.settings_pp>img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.settings_pp>label {
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+    text-transform: capitalize;
+    color: gray;
+}
+
+.settings_pp>label:hover {
+    text-decoration: underline;
+}
+
+.settings_icon {
+    font-size: 2rem;
+    width: 30px;
+    height: 30px;
+    border: 50%;
+    color: gray;
+    margin: 0 0.5rem;
+}
+
+.settings_form>label {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.settings_form>input {
+    color: gray;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 0.5rem;
+}
+
+.settings_form>input:focus {
+    outline: none;
+}
+
+.settings_form>input::placeholder {
+    text-transform: capitalize;
+    padding-left: 5px;
+}
+
+.settings_submit {
+    width: 10rem;
+    align-self: center;
+    border-radius: 5px;
+    border: none;
+    color: rgb(185, 185, 185);
+    background-color: rgb(42, 42, 43);
+    padding: 1rem;
+    margin-top: 2rem;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.settings_submit:hover {
+    background-color: black;
+}
+
+.success {
+    color: green;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin: 0.5rem 0;
+}
+
+.settings_warning {
+    color: red;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin: 0.5rem 0;
+}

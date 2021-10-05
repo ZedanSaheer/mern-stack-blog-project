@@ -1,0 +1,73 @@
+.topbar{
+    width: 100%;
+    height: 4rem;
+    background-color: white;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    font-family: "poppins",sans-serif;
+    z-index: 999;
+}
+
+.topbar_left , .topbar_right{
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.topbar_left-icons{
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+}
+.topbar_left-icons:hover{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+.topbar_center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 6;
+    cursor: pointer;
+}
+
+.topbar_center-list{
+    display: flex;
+    align-items: center;
+}
+
+.topbar_center-listItem{
+    list-style: none;
+    margin: 0 0.3rem;
+    color: #444;
+}
+
+.topbar_center-listItem:hover{
+    font-weight: 800;
+}
+
+.topbar_right-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+}
+.sb-avatar{
+    margin: 0 0.5rem;
+}
+.sb-avatar:hover{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+.topbar_right-searchIcon{
+    font-size: 1.5rem !important;
+}
+.topbar_right-searchIcon:hover{
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}

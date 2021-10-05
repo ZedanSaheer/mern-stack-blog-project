@@ -1,0 +1,80 @@
+.post{
+    width: 16rem;
+    margin: 0 1.5rem 3rem 1.5rem;
+    font-family: "poppins",sans-serif;
+    text-align: center;
+}
+.post_img{
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.skeleton_img{
+    width: 100%;
+    height: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    color: white;
+    text-transform: uppercase;
+    padding: 0 1rem;
+    font-size: 10px;
+    font-family: "montserrat",sans-serif;
+    cursor: pointer;
+}
+.link_post{
+    text-decoration: none;
+}
+.post_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.5rem;
+}
+.post_categories{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.post_category{
+    margin-right:0.5rem;
+    font-size: 0.6rem;
+    padding: 0.3rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: rgb(255, 255, 255);
+    background-color: rgb(46, 46, 46);
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.post_title{
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: "Montserrat";
+    cursor: pointer;
+    margin: 0.5rem 0;
+}
+.post_date{
+    font-style: italic;
+    color: gray;
+    margin: 0.5rem 0;
+}
+.post_time{
+    margin-left: 1rem;
+}
+.post_desc{
+    font-family: "Montserrat",sans-serif;
+    font-size: 0.6rem;
+    line-height: 15px;
+    letter-spacing: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
