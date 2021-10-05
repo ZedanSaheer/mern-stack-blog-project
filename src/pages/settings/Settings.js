@@ -17,7 +17,7 @@ const Settings = () => {
     const [warning, setWarning] = useState(false);
     const [dialog, showDialog] = useState(false);
     const [warningUpload, setWarningUpload] = useState(false);
-    const PF = "http://localhost:5000/images/"
+    const PF = "https://mern-blog-zedan.herokuapp.com/images/"
 
     const handleSubmit = async (e) => {
         dispatch({ type: "UPDATE_START" })
@@ -81,7 +81,6 @@ const Settings = () => {
         }
     }
 
-
     return (
         <div className="settings">
             <div className="settings_wrapper">
@@ -112,7 +111,7 @@ const Settings = () => {
                             Change display picture <BiUserCircle className="settings_icon" />
                         </label>
                         <input type="file" id="file" style={{ display: 'none' }}
-                            onChange={(e) => setFile(e.target.files[0])}
+                            onChange={(e) => setFile(e.target.files[0])&&console.log(e.target.files)}
                             accept=".png,.jpeg,.jpg,.svg"
                         />
                     </div>

@@ -55,6 +55,7 @@ const SinglePost = () => {
                         username: user?.username,
                         title,
                         desc,
+                        admin : user.admin
                 });
            setUpdateMode(false);
         } catch (error) {
@@ -76,6 +77,16 @@ const SinglePost = () => {
                                 onClick={handleDelete}
                             />
                         </span>)}
+                        {
+                            user.admin && (<span className="singlepost_edit">
+                            <BiEdit className="singlepost_icon"
+                                onClick={() => setUpdateMode(true)}
+                            />
+                            <AiFillDelete className="singlepost_icon"
+                                onClick={handleDelete}
+                            />
+                        </span>)
+                        }
                     </h1>)}
                 <div className="singlepost_info">
                     <span className="singlepost_author">Author : <Link className="link" to={`/?user=${post.username}`}><b>{post.username}</b></Link></span>
