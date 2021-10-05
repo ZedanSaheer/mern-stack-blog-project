@@ -40,6 +40,7 @@ const SinglePost = () => {
                 {
                     data: {
                         username: user?.username,
+                        admin : user.admin
                     }
                 });
             window.location.replace("/");
