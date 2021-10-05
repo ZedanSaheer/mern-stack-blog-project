@@ -7,6 +7,9 @@
     margin: 0;
     box-sizing: border-box;
 }
+.App{
+    -webkit-tap-highlight-color: transparent;
+}
 .warning{
     color: red;
     font-size: 10px;

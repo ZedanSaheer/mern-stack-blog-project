@@ -1,8 +1,8 @@
 .write {
-    padding-top: 3rem;
+    padding-top: 5rem;
 }
 
-.write_img{
+.write_img {
     margin-left: 10rem;
     width: 70vw;
     height: 250px;
@@ -45,8 +45,8 @@
     font-weight: 600;
 }
 
-.write_input::placeholder{
-    font-family: "poppins",sans-serif;
+.write_input::placeholder {
+    font-family: "poppins", sans-serif;
     text-transform: capitalize;
 }
 
@@ -70,20 +70,28 @@
     border: none;
     text-transform: uppercase;
     border-radius: 10px;
-    font-family: "montserrat",sans-serif;
+    font-family: "montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
 }
-.write_form_submit:hover{
+
+.write_form_submit:hover {
     background-color: rgb(92, 92, 92);
     cursor: pointer;
+}
+
+@media (max-width:600px) {
+    .write_form_submit {
+        top: 0px;
+        right: 60px;
+    }
 }
 
 @media (max-width:800px) {
     .write_form_group {
         margin-left: 4rem;
     }
-    .write_img{
+    .write_img {
         margin-left: 4rem;
     }
 }

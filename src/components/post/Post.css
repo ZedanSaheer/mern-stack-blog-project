@@ -78,3 +78,13 @@
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 }
+@media (max-width:800px) {
+    .post{
+        width: 50%;
+    }   
+}
+@media (max-width:600px) {
+    .post{
+        width: 100%;
+    }   
+}

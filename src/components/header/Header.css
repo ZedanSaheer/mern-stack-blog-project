@@ -27,3 +27,8 @@
     height: 30rem;
     object-fit: cover;
 }
+@media (max-width:600px) {
+    .header{
+        margin-top: 0px;
+    }
+}

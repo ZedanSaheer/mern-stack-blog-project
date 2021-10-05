@@ -1,5 +1,5 @@
 .login{
-    height: calc(100vh - 4rem);
+    height: 100vh;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -63,7 +63,6 @@ h2{
 @media (max-width:600px) {
     .login{
         flex-direction: column;
-        margin-top: 4rem;
     }
     .login_form{
         margin: 2rem 0;
