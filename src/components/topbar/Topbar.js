@@ -15,7 +15,7 @@ const Topbar = () => {
             type: "LOGOUT",
         });
     }
-    const PF = "http://localhost:5000/images/"
+    const PF = "https://mern-blog-zedan.herokuapp.com/images/"
 
     return (
         <div className="topbar">

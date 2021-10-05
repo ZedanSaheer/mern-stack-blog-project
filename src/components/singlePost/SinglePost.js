@@ -32,7 +32,7 @@ const SinglePost = () => {
         getPost();
     }, [path]);
 
-    const PF = "http://localhost:5000/images/";
+    const PF = "https://mern-blog-zedan.herokuapp.com/images/";
 
     const handleDelete = async () => {
         try {
