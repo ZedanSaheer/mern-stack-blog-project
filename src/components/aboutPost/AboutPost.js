@@ -1,6 +1,6 @@
 import "../singlePost/Singlepost.css"
-import programmer from "../sidebar/media/the-dream.jpg"
-import loveCode from "../sidebar/media/love.jpg"
+import programmer from "./media/the dream.jpg"
+import loveCode from "./media/love.jpg"
 
 const SinglePost = () => {
     return (
