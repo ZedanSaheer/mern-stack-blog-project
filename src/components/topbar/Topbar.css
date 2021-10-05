@@ -164,6 +164,7 @@
     .topbar.close{
         transform: translate(-100);
         transition: transform 0.2s ease-in-out;
+        opacity: 0;
     }
     .topbar_center-list{
         display: flex;

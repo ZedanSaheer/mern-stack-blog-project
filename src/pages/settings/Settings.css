@@ -1,6 +1,7 @@
 .settings {
     display: flex;
     font-family: "epilogue", sans-serif;
+    padding-top: 3rem;
 }
 
 .settings_wrapper {
