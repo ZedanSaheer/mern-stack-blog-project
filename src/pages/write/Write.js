@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useContext, useState } from "react"
 import { BiImageAdd } from "react-icons/bi"
+import instance from "../../axios";
 import { Context } from "../../context/Context";
 import "./Write.css"
 
@@ -23,14 +23,14 @@ const Write = () => {
             data.append("file",file);
             newPost.photo=filename;
             try {
-                await axios.post("/upload",data)
+                await instance.post("/upload",data)
             } catch (error) {
                 
             }
 
         }
         try {
-           const response = await axios.post("/posts",newPost);
+           const response = await instance.post("/posts",newPost);
            window.location.replace("/post/"+response.data._id);
         } catch (error) {
             alert("something went wrong!")

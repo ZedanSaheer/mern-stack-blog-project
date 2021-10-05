@@ -2,7 +2,7 @@ import "./Sidebar.css"
 import { AiFillLinkedin } from "react-icons/ai"
 import { FaInstagramSquare,FaGithubSquare } from "react-icons/fa"
 import { useEffect, useState } from "react"
-import axios from "axios"
+import instance from "../../axios"
 import { Link } from "react-router-dom"
 import myself from "./media/zedan.png"
 
@@ -12,7 +12,7 @@ const Sidebar = () => {
 
     useEffect(()=>{
         const getCat = async () =>{
-            const response = await axios.get("/categories");
+            const response = await instance.get("/categories");
             setCat(response.data)
         }
         getCat();

@@ -2,8 +2,8 @@ import "./Login.css"
 import { Link } from "react-router-dom"
 import { useContext, useRef, useState } from "react";
 import { Context } from "../../context/Context";
-import axios from "axios";
 import ReactLoading from "react-loading"
+import instance from "../../axios";
 
 const Login = () => {
 
@@ -18,7 +18,7 @@ const Login = () => {
             type: "LOGIN_START"
         });
         try {
-            const response = await axios.post("/auth/login", {
+            const response = await instance.post("/auth/login", {
                 username: userRef.current.value,
                 password: passwordRef.current.value,
             })

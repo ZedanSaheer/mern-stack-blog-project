@@ -7,7 +7,7 @@ const Post = ({ post }) => {
     let green = Math.floor(Math.random() * 256);
     let blue = Math.floor(Math.random() * 256);
     
-    const PF = "http://localhost:5000/images/";
+    const PF = "https://mern-blog-zedan.herokuapp.com/images/";
 
     return (
         <div className="post">

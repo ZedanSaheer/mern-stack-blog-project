@@ -3,9 +3,9 @@ import { BiEdit } from "react-icons/bi"
 import { AiFillDelete } from "react-icons/ai"
 import { useLocation } from "react-router"
 import { useContext, useEffect, useState } from "react"
-import axios from "axios"
 import { Link } from "react-router-dom"
 import { Context } from "../../context/Context"
+import instance from "../../axios"
 
 const SinglePost = () => {
 
@@ -24,7 +24,7 @@ const SinglePost = () => {
 
     useEffect(() => {
         const getPost = async () => {
-            const response = await axios.get("/posts/" + path);
+            const response = await instance.get("/posts/" + path);
             setPost(response.data);
             setTitle(response.data.title);
             setDesc(response.data.desc)
@@ -36,7 +36,7 @@ const SinglePost = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`/posts/${post._id}`,
+            await instance.delete(`/posts/${post._id}`,
                 {
                     data: {
                         username: user?.username,
@@ -50,7 +50,7 @@ const SinglePost = () => {
 
     const handleUpdate = async () => {
         try {
-            await axios.put(`/posts/${post._id}`,
+            await instance.put(`/posts/${post._id}`,
                 {
                         username: user?.username,
                         title,
