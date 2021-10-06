@@ -1,6 +1,7 @@
 .singlepost{
     flex: 9;
     font-family: "poppins";
+    padding: 0 10rem;
 }
 .singlepost_wrapper{
     padding: 1.5rem;
@@ -120,4 +121,9 @@ blockquote{
 .changes:hover{
     background-color:rgb(123, 204, 1); 
     cursor: pointer;
+}
+@media (max-width:700px) {
+    .singlepost{
+        padding: 0 1rem;
+    }
 }

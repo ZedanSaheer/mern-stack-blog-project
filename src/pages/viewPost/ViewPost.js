@@ -7,7 +7,6 @@ const ViewPost = ({about}) => {
     return (
         <div className="viewpost">
             {about ? <AboutPost/>:<SinglePost/>}
-            <Sidebar/>
         </div>
     )
 }

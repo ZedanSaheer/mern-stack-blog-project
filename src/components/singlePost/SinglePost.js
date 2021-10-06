@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { Context } from "../../context/Context"
 import instance from "../../axios"
+import AddCategory from "../addCategories/AddCategory"
 
 const SinglePost = () => {
 
@@ -14,6 +15,7 @@ const SinglePost = () => {
     const [post, setPost] = useState([]);
     const { user } = useContext(Context);
     const [title, setTitle] = useState("");
+    const [category ,setCategory] = useState([]);
     const [desc, setDesc] = useState("");
     const [updateMode, setUpdateMode] = useState(false)
 
@@ -55,6 +57,7 @@ const SinglePost = () => {
                         username: user?.username,
                         title,
                         desc,
+                        categories:[...category],
                         admin : user.admin
                 });
            setUpdateMode(false);
@@ -74,6 +77,7 @@ const SinglePost = () => {
                         key={i}>{category}</span>
                     ))}
                 </div>
+                {updateMode && <AddCategory setCategory={setCategory}/>}
                 {updateMode ? (<input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="singlepost_inputText" />) :
                     (<h1>{title}
                         {post.username === user?.username && (<span className="singlepost_edit">
