@@ -70,7 +70,7 @@ const SinglePost = () => {
                 {post?.photo ? (<img src={PF + post.photo} alt="post cover" className="singlepost_img" />):(<div className="skeleton_img" style={{ backgroundColor: `rgb(${red},${green},${blue})` }}><span>{post.title}</span></div>)}
                 <div className="post_categories">
                     {post?.categories?.map((category,i) => (
-                        <span className="post_category"
+                        <span className="singlepost_category"
                         key={i}>{category}</span>
                     ))}
                 </div>
