@@ -14,7 +14,7 @@ const Post = ({ post }) => {
             {post?.photo ? (<Link to={`/post/${post._id}`} className="link_post"><img src={PF + post.photo} alt="post cover" className="post_img"/></Link>) : <Link to={`/post/${post._id}`} className="link_post"><div className="skeleton_img" style={{ backgroundColor: `rgb(${red},${green},${blue})` }}><span>{post.title}</span></div></Link>}
             <div className="post_info">
                 <div className="post_categories">
-                    {post.categories.map((category,index) => (
+                    {post.categories?.map((category,index) => (
                         <span className="post_category"
                         key={index}>{category}</span>
                     ))}
