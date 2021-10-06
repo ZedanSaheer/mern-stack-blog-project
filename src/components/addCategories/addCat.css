@@ -21,6 +21,18 @@
     cursor: pointer;
     user-select: none;
 }
+.addCat > p{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "poppins", sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgb(160, 0, 0);
+    margin: 1rem;
+    font-weight: 600;
+}
 .active{
     background-color: black;
     color: white;

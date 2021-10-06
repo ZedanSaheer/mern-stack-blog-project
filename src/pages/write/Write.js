@@ -13,6 +13,7 @@ const Write = () => {
     const [category , setCategory] = useState([]);
     const {user} = useContext(Context);
 
+    
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
