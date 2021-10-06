@@ -1,0 +1,25 @@
+.addCat{
+    width: 70vw;
+    margin-left: 4rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.addCat > .optionCat{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.addCat > .optionCat > span {
+    margin: 0.5rem 1rem;
+    text-transform: capitalize;
+    font-family: "poppins", sans-serif;
+    border: 1px solid black;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+.active{
+    background-color: black;
+    color: white;
+}

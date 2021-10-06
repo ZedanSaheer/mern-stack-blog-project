@@ -21,7 +21,6 @@ const SinglePost = () => {
     let green = Math.floor(Math.random() * 256);
     let blue = Math.floor(Math.random() * 256);
 
-
     useEffect(() => {
         const getPost = async () => {
             const response = await instance.get("/posts/" + path);
@@ -64,6 +63,7 @@ const SinglePost = () => {
         }
     }
 
+
     return (
         <div className="singlepost">
             <div className="singlepost_wrapper">
@@ -79,14 +79,14 @@ const SinglePost = () => {
                             />
                         </span>)}
                         {
-                            user.admin && (<span className="singlepost_edit">
+                            (user?.admin && (<span className="singlepost_edit">
                             <BiEdit className="singlepost_icon"
                                 onClick={() => setUpdateMode(true)}
                             />
                             <AiFillDelete className="singlepost_icon"
                                 onClick={handleDelete}
                             />
-                        </span>)
+                        </span>))
                         }
                     </h1>)}
                 <div className="singlepost_info">

@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { BiImageAdd } from "react-icons/bi"
 import instance from "../../axios";
+import AddCategory from "../../components/addCategories/AddCategory";
 import { Context } from "../../context/Context";
 import "./Write.css"
 
@@ -51,6 +52,7 @@ const Write = () => {
                     onChange={e=>setTitle(e.target.value)}
                     />
                 </div>
+                <AddCategory/>
                 <div className="write_form_group">
                     <textarea className="write_input textarea" cols="30" rows="10" placeholder="write your story.." onChange={e=>setDesc(e.target.value)}
                     ></textarea>

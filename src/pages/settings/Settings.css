@@ -3,6 +3,13 @@
     font-family: "epilogue", sans-serif;
     padding-top: 3rem;
 }
+.loading{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
 
 .settings_wrapper {
     flex: 9;

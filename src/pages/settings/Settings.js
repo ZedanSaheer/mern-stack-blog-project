@@ -4,12 +4,13 @@ import { BiUserCircle } from 'react-icons/bi'
 import instance from '../../axios'
 import Sidebar from '../../components/sidebar/Sidebar'
 import { Context } from '../../context/Context'
+import ReactLoading from "react-loading"
 import "./Settings.css"
 
 const Settings = () => {
 
     const [file, setFile] = useState(null);
-    const { user, dispatch } = useContext(Context);
+    const { user, dispatch,isFetching } = useContext(Context);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -45,6 +46,24 @@ const Settings = () => {
 
         }
         if (!username === "" || !email === "" || !password === "") {
+            const updatedUser = {
+                userId: user._id,
+                username
+                , email
+                , password
+            }
+            try {
+                const response = await instance.put("/users/" + user._id, updatedUser);
+                setSuccess(true);
+                setWarning(false);
+                dispatch({ type: "UPDATE_SUCCESS", payload: response.data });
+            } catch (error) {
+                setWarning(true);
+                dispatch({ type: "UPDATE_FAILURE" });
+                setSuccess(false);
+            }
+        }
+        if (username === "" || email === "" || password === "") {
             const updatedUser = {
                 userId: user._id,
                 username
@@ -127,8 +146,9 @@ const Settings = () => {
                     <input type="password" placeholder="*******"
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <button className="settings_submit"
-                        type="submit">Update</button>
+                    {isFetching ? (<div className="loading"><ReactLoading type="spin" color="black" height="5%" width="5%" /></div>) : (<button className="settings_submit"
+                        type="submit">Update</button>)}
+                    
                 </form>
             </div>
             <Sidebar />
