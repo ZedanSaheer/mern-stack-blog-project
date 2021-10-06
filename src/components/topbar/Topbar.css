@@ -124,30 +124,33 @@
     .topbar-menu-top{
         width: 20px;
         height: 1px;
-        background-color: whitesmoke;
+        background-color: whitesmoke !important;
+    }
+    div.topbar.close > div.topbar_center > ul > a:nth-child(4) > li{
+        opacity: 0;
     }
     .topbar-menu-middle{
         width: 20px;
         height: 1px;
-        background-color: whitesmoke;
+        background-color: whitesmoke !important;
         margin: 0.35rem 0;
     }
     .topbar-menu-bottom{
         width: 20px;
         height: 1px;
-        background-color: whitesmoke;
+        background-color: whitesmoke !important;
     }
     .topbar-menu-top.active{
         margin-bottom: -2px;
         transform: rotate(45deg);
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease !important;
     }
     .topbar-menu-middle.active{
         display: none;
     }
     .topbar-menu-bottom.active{
         transform: rotate(-45deg);
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease !important;
     }
     .topbar.active{
         position: fixed;
@@ -158,13 +161,10 @@
         width: 40%;
         padding-bottom: 20rem;
         padding-top: 5rem;
-        transform: translate(0);
-        transition: transform 0.3s ease-in-out;
     }   
     .topbar.close{
-        transform: translate(-100);
-        transition: transform 0.2s ease-in-out;
-        opacity: 0;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out !important;
     }
     .topbar_center-list{
         display: flex;
@@ -172,6 +172,9 @@
         height: 100%;
         justify-content: space-around;
         align-items: center;
+    }
+    .topbar_center-listItem{
+        color: white;
     }
     .topbar_center-listItem.sm{
         color: white !important;

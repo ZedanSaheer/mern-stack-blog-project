@@ -10,12 +10,14 @@ const Write = () => {
     const [title , setTitle] = useState("");
     const [desc , setDesc] = useState("");
     const [file , setFile] = useState(null);
+    const [category , setCategory] = useState([]);
     const {user} = useContext(Context);
+
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
         const newPost = {
-            username:user.username,title,desc,
+            username:user.username,title,desc,categories:[...category],
         }
         if(file){
             const data = new FormData();
@@ -37,7 +39,6 @@ const Write = () => {
             alert("something went wrong!")
         }
     }
-    
 
     return (
         <div className="write">
@@ -52,7 +53,7 @@ const Write = () => {
                     onChange={e=>setTitle(e.target.value)}
                     />
                 </div>
-                <AddCategory/>
+                <AddCategory setCategory={setCategory}/>
                 <div className="write_form_group">
                     <textarea className="write_input textarea" cols="30" rows="10" placeholder="write your story.." onChange={e=>setDesc(e.target.value)}
                     ></textarea>

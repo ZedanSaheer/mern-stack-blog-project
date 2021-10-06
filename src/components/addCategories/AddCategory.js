@@ -1,14 +1,27 @@
 import "./addCat.css"
 import React, { useEffect, useState } from 'react'
 
-const AddCategory = () => {
+const AddCategory = ({setCategory}) => {
 
     const [selected , setSelected] = useState("");
+    const [cats , setCats] = useState([]);
 
+    useEffect(() => {
+        setCategory([...cats])
+    }, [cats,setCategory])
+   
     const handleSelect = (e) => {
-        setSelected(e.target.innerText);
-        console.log(e.target.classList.toggle("active"));
+        const cat = e.target.innerText;
+        setSelected(cat); //force re-render
+        e.target.classList.toggle("active");
+        if(e.target.classList.contains("active")){
+            setCats([...cats,cat]);
+        }else{
+            cats.splice(cats.indexOf(cat),1)
+        }
+        
     }
+
 
     return (
         <div className="addCat">

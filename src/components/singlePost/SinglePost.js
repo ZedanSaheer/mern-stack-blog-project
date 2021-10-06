@@ -68,6 +68,12 @@ const SinglePost = () => {
         <div className="singlepost">
             <div className="singlepost_wrapper">
                 {post?.photo ? (<img src={PF + post.photo} alt="post cover" className="singlepost_img" />):(<div className="skeleton_img" style={{ backgroundColor: `rgb(${red},${green},${blue})` }}><span>{post.title}</span></div>)}
+                <div className="post_categories">
+                    {post.categories.map((category,i) => (
+                        <span className="post_category"
+                        key={i}>{category}</span>
+                    ))}
+                </div>
                 {updateMode ? (<input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="singlepost_inputText" />) :
                     (<h1>{title}
                         {post.username === user?.username && (<span className="singlepost_edit">
