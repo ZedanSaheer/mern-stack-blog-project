@@ -32,7 +32,7 @@ const Reducer = (state, action) => {
         case "UPDATE_SUCCESS":
             return {
                 user :action.payload,
-                isFetching:true,
+                isFetching:false,
                 error:false
             }
         case "UPDATE_FAILURE":

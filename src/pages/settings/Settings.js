@@ -10,7 +10,7 @@ import "./Settings.css"
 const Settings = () => {
 
     const [file, setFile] = useState(null);
-    const { user, dispatch,isFetching } = useContext(Context);
+    const { user, dispatch, isFetching } = useContext(Context);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -38,6 +38,7 @@ const Settings = () => {
                 setSuccess(true);
                 setWarningUpload(false);
                 dispatch({ type: "UPDATE_SUCCESS", payload: response.data })
+                window.location.reload("/");
             } catch (error) {
                 setWarningUpload(true);
                 setSuccess(false);
@@ -57,41 +58,25 @@ const Settings = () => {
                 setSuccess(true);
                 setWarning(false);
                 dispatch({ type: "UPDATE_SUCCESS", payload: response.data });
+                window.location.reload("/");
             } catch (error) {
                 setWarning(true);
                 dispatch({ type: "UPDATE_FAILURE" });
                 setSuccess(false);
             }
         }
-        if (username === "" || email === "" || password === "") {
-            const updatedUser = {
-                userId: user._id,
-                username
-                , email
-                , password
-            }
-            try {
-                const response = await instance.put("/users/" + user._id, updatedUser);
-                setSuccess(true);
-                setWarning(false);
-                dispatch({ type: "UPDATE_SUCCESS", payload: response.data });
-            } catch (error) {
-                setWarning(true);
-                dispatch({ type: "UPDATE_FAILURE" });
-                setSuccess(false);
-            }
-        }
+        dispatch({ type: "UPDATE_FAILURE" });
     }
 
     const handleDelete = async () => {
         try {
-            await instance.delete(`/users/${user._id}`,  {
+            await instance.delete(`/users/${user._id}`, {
                 data: {
                     userId: user?._id,
                 }
             });
             dispatch({
-                type:"LOGOUT",
+                type: "LOGOUT",
             })
             window.location.reload("/");
         } catch (error) {
@@ -109,17 +94,18 @@ const Settings = () => {
                         <span className="settings_deleteTitle" onClick={() => showDialog(true)}>Delete your account</span>
                         {dialog &&
                             <div className="settings_dialog">
-                              <div>
-                              <div>Are you sure? this action cannot be changed.</div>
-                                <div className="dialog_options">
-                                    <span onClick={handleDelete} className="settings_deleteTitle_yes">yes</span>
-                                    <span className="settings_deleteTitle_no" onClick={() => showDialog(false)}>no</span>
+                                <div>
+                                    <div>Are you sure? this action cannot be changed.</div>
+                                    <div className="dialog_options">
+                                        <span onClick={handleDelete} className="settings_deleteTitle_yes">yes</span>
+                                        <span className="settings_deleteTitle_no" onClick={() => showDialog(false)}>no</span>
+                                    </div>
                                 </div>
-                              </div>
                             </div>}
                     </div>
                 </div>
                 <form className="settings_form" onSubmit={handleSubmit}>
+                    {file && <span className="success">Press update to display changes.</span>}
                     {warningUpload && <span className="settings_warning">Uploading failed , please try again later.</span>}
                     {warning && <span className="settings_warning">Some error occured, please try again</span>}
                     {success && <span className="success">Successfully updated profile details.</span>}
@@ -130,25 +116,28 @@ const Settings = () => {
                             Change display picture <BiUserCircle className="settings_icon" />
                         </label>
                         <input type="file" id="file" style={{ display: 'none' }}
-                            onChange={(e) => setFile(e.target.files[0])&&console.log(e.target.files)}
+                            onChange={(e) => setFile(e.target.files[0])}
                             accept=".png,.jpeg,.jpg,.svg"
                         />
                     </div>
                     <label>username</label>
-                    <input type="text" placeholder={user.username}
+                    <input autoComplete="off" type="text" placeholder={user.username}
                         onChange={(e) => setUsername(e.target.value)}
                     />
                     <label>email</label>
-                    <input type="email" placeholder={user.email}
+                    <input autoComplete="off" type="email" placeholder={user.email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <label>password</label>
-                    <input type="password" placeholder="*******"
+                    <input autoComplete="off" type="password" placeholder="*******"
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    {isFetching ? (<div className="loading"><ReactLoading type="spin" color="black" height="5%" width="5%" /></div>) : (<button className="settings_submit"
-                        type="submit">Update</button>)}
-                    
+                    {isFetching ?
+                        (<div className="loading"><ReactLoading type="spin" color="black" height="5%" width="5%" /></div>)
+                         :
+                        (<button className="settings_submit"
+                            type="submit">Update</button>)}
+
                 </form>
             </div>
             <Sidebar />
