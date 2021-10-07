@@ -15,7 +15,7 @@ const SinglePost = () => {
     const [post, setPost] = useState([]);
     const { user } = useContext(Context);
     const [title, setTitle] = useState("");
-    const [category ,setCategory] = useState([]);
+    const [category, setCategory] = useState([]);
     const [desc, setDesc] = useState("");
     const [updateMode, setUpdateMode] = useState(false)
 
@@ -28,7 +28,7 @@ const SinglePost = () => {
             const response = await instance.get("/posts/" + path);
             setPost(response.data);
             setTitle(response.data.title);
-            setDesc(response.data.desc)
+            setDesc(response.data.desc);
         }
         getPost();
     }, [path]);
@@ -41,7 +41,7 @@ const SinglePost = () => {
                 {
                     data: {
                         username: user?.username,
-                        admin : user.admin
+                        admin: user.admin
                     }
                 });
             window.location.replace("/");
@@ -54,13 +54,13 @@ const SinglePost = () => {
         try {
             await instance.put(`/posts/${post._id}`,
                 {
-                        username: user?.username,
-                        title,
-                        desc,
-                        categories:[...category],
-                        admin : user.admin
+                    username: user?.username,
+                    title,
+                    desc,
+                    categories: [...category],
+                    admin: user.admin
                 });
-           setUpdateMode(false);
+            setUpdateMode(false);
         } catch (error) {
             console.log(error);
         }
@@ -70,17 +70,17 @@ const SinglePost = () => {
     return (
         <div className="singlepost">
             <div className="singlepost_wrapper">
-                {post?.photo ? (<img src={PF + post.photo} alt="post cover" className="singlepost_img" />):(<div className="skeleton_img" style={{ backgroundColor: `rgb(${red},${green},${blue})` }}><span>{post.title}</span></div>)}
+                {post?.photo ? (<img src={PF + post.photo} alt="post cover" className="singlepost_img" />) : (<div className="skeleton_img" style={{ backgroundColor: `rgb(${red},${green},${blue})` }}><span>{post.title}</span></div>)}
                 <div className="post_categories">
-                    {post?.categories?.map((category,i) => (
+                    {post?.categories?.map((category, i) => (
                         <span className="singlepost_category"
-                        key={i}>{category}</span>
+                            key={i}><Link to={`/?cat=${category}`} className="link" key={i}> {category}</Link></span>
                     ))}
                 </div>
-                {updateMode && <AddCategory setCategory={setCategory}/>}
+                {updateMode && <AddCategory setCategory={setCategory} />}
                 {updateMode ? (<input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="singlepost_inputText" />) :
                     (<h1>{title}
-                        {post.username === user?.username && (<span className="singlepost_edit">
+                        {post.username === user?.username && (<span className={user?.admin ? `singlepost_edit admin` : `singlepost_edit`}>
                             <BiEdit className="singlepost_icon"
                                 onClick={() => setUpdateMode(true)}
                             />
@@ -90,13 +90,13 @@ const SinglePost = () => {
                         </span>)}
                         {
                             (user?.admin && (<span className="singlepost_edit">
-                            <BiEdit className="singlepost_icon"
-                                onClick={() => setUpdateMode(true)}
-                            />
-                            <AiFillDelete className="singlepost_icon"
-                                onClick={handleDelete}
-                            />
-                        </span>))
+                                <BiEdit className="singlepost_icon"
+                                    onClick={() => setUpdateMode(true)}
+                                />
+                                <AiFillDelete className="singlepost_icon"
+                                    onClick={handleDelete}
+                                />
+                            </span>))
                         }
                     </h1>)}
                 <div className="singlepost_info">

@@ -118,6 +118,9 @@ blockquote{
     border-radius: 5px;
     color:white;
 }
+.admin{
+    display: none;
+}
 .changes:hover{
     background-color:rgb(123, 204, 1); 
     cursor: pointer;

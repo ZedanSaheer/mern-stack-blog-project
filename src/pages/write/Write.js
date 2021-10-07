@@ -10,13 +10,14 @@ const Write = () => {
     const [title , setTitle] = useState("");
     const [desc , setDesc] = useState("");
     const [file , setFile] = useState(null);
+    const [warning , setWarning] = useState(false);
+    const [error , setError] = useState(false)
     const [category , setCategory] = useState([]);
     const {user} = useContext(Context);
 
-    
-
     const handleSubmit = async (e) =>{
         e.preventDefault();
+        setWarning(true)
         const newPost = {
             username:user.username,title,desc,categories:[...category],
         }
@@ -28,16 +29,21 @@ const Write = () => {
             newPost.photo=filename;
             try {
                 await instance.post("/upload",data)
+                setError(false);
             } catch (error) {
-                
+                setError(true);
             }
 
         }
-        try {
-           const response = await instance.post("/posts",newPost);
-           window.location.replace("/post/"+response.data._id);
-        } catch (error) {
-            alert("something went wrong!")
+        if(title!=="" && desc!==""){
+            try {
+                const response = await instance.post("/posts",newPost);
+                setError(false);
+                setWarning(false);
+                window.location.replace("/post/"+response.data._id);
+             } catch (error) {
+                 setError(true);
+             }
         }
     }
 
@@ -45,6 +51,8 @@ const Write = () => {
         <div className="write">
        {file && <img src={URL.createObjectURL(file)} alt="upload cover" className="write_img" />}
             <form className="write_form" onSubmit={handleSubmit}>
+                {error && <p className="warning">Something went wrong , please try again </p>}
+                {warning && <p className="warning">Please do not leave the blog empty</p> }
                 <div className="write_form_group">
                     <label htmlFor="file">
                         <BiImageAdd className="write_form_icon"/>
