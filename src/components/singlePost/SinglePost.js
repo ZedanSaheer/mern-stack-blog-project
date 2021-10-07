@@ -70,13 +70,13 @@ const SinglePost = () => {
     return (
         <div className="singlepost">
             <div className="singlepost_wrapper">
-                {post?.photo ? (<img src={PF + post.photo} alt="post cover" className="singlepost_img" />) : (<div className="skeleton_img" style={{ backgroundColor: `rgb(${red},${green},${blue})` }}><span>{post.title}</span></div>)}
-                <div className="post_categories">
+                {!updateMode && <>{post?.photo ? (<img src={PF + post.photo} alt="post cover" className="singlepost_img" />) : (<div className="skeleton_img" style={{ backgroundColor: `rgb(${red},${green},${blue})` }}><span>{post.title}</span></div>)}</>}
+               {!updateMode && <div className="post_categories">
                     {post?.categories?.map((category, i) => (
                         <span className="singlepost_category"
                             key={i}><Link to={`/?cat=${category}`} className="link" key={i}> {category}</Link></span>
                     ))}
-                </div>
+                </div>}
                 {updateMode && <AddCategory setCategory={setCategory} />}
                 {updateMode ? (<input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="singlepost_inputText" />) :
                     (<h1>{title}
