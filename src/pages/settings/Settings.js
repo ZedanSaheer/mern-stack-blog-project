@@ -1,10 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState , useEffect} from 'react'
 import Avatar from 'react-avatar'
 import { BiUserCircle } from 'react-icons/bi'
 import instance from '../../axios'
 import Sidebar from '../../components/sidebar/Sidebar'
 import { Context } from '../../context/Context'
 import ReactLoading from "react-loading"
+import axios from 'axios'
 import "./Settings.css"
 
 const Settings = () => {
@@ -16,6 +17,7 @@ const Settings = () => {
     const [email, setEmail] = useState("");
     const [success, setSuccess] = useState(false);
     const [warning, setWarning] = useState(false);
+    const [image, setImage] = useState(false);
     const [dialog, showDialog] = useState(false);
     const [warningUpload, setWarningUpload] = useState(false);
     const PF = "https://mern-blog-zedan.herokuapp.com/images/"
@@ -68,6 +70,18 @@ const Settings = () => {
         dispatch({ type: "UPDATE_FAILURE" });
     }
 
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                await axios.get(PF + user.profilePic);
+                setImage(true);
+            } catch (error) {           
+                setImage(false);
+            }
+        }
+        getUser();
+    }, [user.profilePic])
+
     const handleDelete = async () => {
         try {
             await instance.delete(`/users/${user._id}`, {
@@ -111,7 +125,7 @@ const Settings = () => {
                     {success && <span className="success">Successfully updated profile details.</span>}
                     <label>Profile Picture</label>
                     <div className="settings_pp">
-                        {!user.profilePic ? <Avatar name={user.username} round size={50} /> : <img src={file ? URL.createObjectURL(file) : PF + user.profilePic} alt="settings profile icon" />}
+                        {!image ? <Avatar name={user.username} round size={50} /> : <img src={file ? URL.createObjectURL(file) : PF + user.profilePic} alt="settings profile icon" />}
                         <label htmlFor="file">
                             Change display picture <BiUserCircle className="settings_icon" />
                         </label>
